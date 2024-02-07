@@ -16,7 +16,7 @@ body {
 }
 
 .container {
-    width: 55vh;
+    width: auto;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -96,7 +96,7 @@ body {
     justify-content: space-between;
     background-color: rgb(230, 235, 243);
     margin: 0 0 3% 0;
-    width: auto;
+    /* width: fit-content; */
 }
 .navbar-list{
     display: flex;
