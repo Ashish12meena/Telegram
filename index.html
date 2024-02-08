@@ -25,7 +25,7 @@
     </nav>
     <div class="content">
         <div class="container">
-            <div class="dp"><img src="img/ashish.jpg" alt="img"></div>
+            <div class="dp"><img src="img/rahul.jpg" alt="img"></div>
             <div class="content">
                 <h2 class="setup">Somesh Thakre 11<img class="trophy" src="img/trophy.jpg" alt=""></h2>
                 <h5 class="subs">2561 subscribers</h4>
@@ -45,32 +45,53 @@
         </div>
     </div>
     <script>
-        
-        // Attach an event listener to the link element
+          // Attach an event listener to the link element
         function updateClickCount() {
             // Get click count from localStorage or initialize to 0 if not set
-            let clickCount = parseInt(localStorage.getItem('clickCount')) || 0;
-            
+            let clickCount = parseInt(getCookie('clickCount')) || 0;
+
             // Update click count display
             document.getElementById('clickCount').textContent = clickCount;
         }
         function handleLinkClick(event) {
             // Increment click count
-            let clickCount = parseInt(localStorage.getItem('clickCount')) || 0;
+            let clickCount = parseInt(getCookie('clickCount')) || 0;
             clickCount++;
-            
+
             // Update click count in localStorage
-            localStorage.setItem('clickCount', clickCount);
-            
+            setCookie('clickCount', clickCount, 365);
+
             // Update click count display
             updateClickCount();
-            
+
         }
         const link = document.getElementsByClassName('myLink');
         for (let links of link) {
             links.addEventListener('click', handleLinkClick);
         }
         updateClickCount();
+        function setCookie(name, value, days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            const expires = "expires=" + date.toUTCString();
+            document.cookie = name + "=" + value + ";" + expires + ";path=/";
+        }
+
+        function getCookie(name) {
+            const cookieName = name + "=";
+            const decodedCookie = decodeURIComponent(document.cookie);
+            const cookieArray = decodedCookie.split(';');
+            for (let i = 0; i < cookieArray.length; i++) {
+                let cookie = cookieArray[i];
+                while (cookie.charAt(0) === ' ') {
+                    cookie = cookie.substring(1);
+                }
+                if (cookie.indexOf(cookieName) === 0) {
+                    return cookie.substring(cookieName.length, cookie.length);
+                }
+            }
+            return "";
+        }
     </script>
 </body>
 
