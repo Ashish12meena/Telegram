@@ -37,8 +37,8 @@ body {
 
 .setup {
     margin: auto;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-weight: 100;
+/*     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+     font-weight: bolder;
 }
 
 .trophy {
