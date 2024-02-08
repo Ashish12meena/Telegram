@@ -25,7 +25,7 @@
     </nav>
     <div class="content">
         <div class="container">
-            <div class="dp"><img src="img/rahul.jpg" alt="img"></div>
+            <div class="dp"><img src="img/ashish.jpg" alt="img"></div>
             <div class="content">
                 <h2 class="setup">Somesh Thakre 11<img class="trophy" src="img/trophy.jpg" alt=""></h2>
                 <h5 class="subs">2561 subscribers</h4>
@@ -35,13 +35,43 @@
             </div>
             <div class="achive"><img class="png-logo" src="img/like.png" alt=""> <span>22 Times Grand league
                     Winner</span></div>
-            <div class="telegram"><a href="https://t.me/somesh11thakr">View in Telegram</a></div>
-            <div class="footer">Preview Channel</div>
+            <div class="telegram"><a class='myLink' href="https://t.me/somesh11thakr">View in Telegram</a></div>
+            <div class="footer">
+                <p>Visiter: <span id="clickCount">0</span></p>
+            </div>
         </div>
         <div class="telegrams">
-            <a href="https://t.me/somesh11thakr">Join For Free Telegram</a>
+            <a class='myLink' href="https://t.me/somesh11thakr">Join For Free Telegram</a>
         </div>
     </div>
+    <script>
+        
+        // Attach an event listener to the link element
+        function updateClickCount() {
+            // Get click count from localStorage or initialize to 0 if not set
+            let clickCount = parseInt(localStorage.getItem('clickCount')) || 0;
+            
+            // Update click count display
+            document.getElementById('clickCount').textContent = clickCount;
+        }
+        function handleLinkClick(event) {
+            // Increment click count
+            let clickCount = parseInt(localStorage.getItem('clickCount')) || 0;
+            clickCount++;
+            
+            // Update click count in localStorage
+            localStorage.setItem('clickCount', clickCount);
+            
+            // Update click count display
+            updateClickCount();
+            
+        }
+        const link = document.getElementsByClassName('myLink');
+        for (let links of link) {
+            links.addEventListener('click', handleLinkClick);
+        }
+        updateClickCount();
+    </script>
 </body>
 
 </html>
